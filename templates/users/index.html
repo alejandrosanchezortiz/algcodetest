@@ -2,12 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Minimal GoJS Sample</title>
-  <meta name="description" content="An almost minimal diagram using a very simple node template and the default link template." />
+  <title>Users Connections</title>
+  <meta name="description" content="Users Connections" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://cdn.jsdelivr.net/npm/gojs@2.0/release/go.js"></script>
   <script id="code">
+    var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
     function init() {
       var $ = go.GraphObject.make;  // for conciseness in defining templates
       myDiagram = $(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
@@ -29,17 +32,23 @@
       // create the model data that will be represented by Nodes and Links
       myDiagram.model = new go.GraphLinksModel(
         [
-          { key: "Alpha", color: "lightblue" },
-          { key: "Beta", color: "orange" },
-          { key: "Gamma", color: "lightgreen" },
-          { key: "Delta", color: "pink" }
+          {% for user in users_list %}
+		  { key: "{{user.name}}", color: randomColorGenerator() }{%if not forloop.last%},{%endif%}
+		  {% endfor %}
+		  //{ key: "Alpha", color: "lightblue" },
         ],
         [
-          { from: "Alpha", to: "Beta" },
-          { from: "Alpha", to: "Gamma" },
-          { from: "Beta", to: "Beta" },
-          { from: "Gamma", to: "Delta" },
-          { from: "Delta", to: "Alpha" }
+		  {% for user_1 in users_list %}
+		    {% for user_2 in user_1.connects.all %}
+			{ from: "{{user_1.name}}", to: "{{user_2.name}}"} {%if not forloop.last%},{%endif%}
+			{% endfor %}
+			{%if not forloop.last%},{%endif%}
+		  {% endfor %}
+          //{ from: "Alpha", to: "Beta" },
+          //{ from: "Alpha", to: "Gamma" },
+          //{ from: "Beta", to: "Beta" },
+          //{ from: "Gamma", to: "Delta" },
+          //{ from: "Delta", to: "Alpha" }
         ]);
     }
   </script>
@@ -48,7 +57,11 @@
 <div id="sample">
   <!-- The DIV for the Diagram needs an explicit size or else we won't see anything.
        This also adds a border to help see the edges of the viewport. -->
-  <div id="myDiagramDiv" style="border: solid 1px black; width:400px; height:400px"></div>
+  {% if users_list %}  
+	<div id="myDiagramDiv" style="border: solid 1px black; width:400px; height:400px"></div>
+  {% else %}
+	<p>No users are available.</p>
+  {% endif %}
 </div>
 </body>
 </html>
