@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block title %}View connected users{% endblock title %}
+
+{% block content %}
+<h1>View connected users</h1>
+{% if users_list %}
+	<table>
+	<tr>
+		<th>User Id</th>
+		<th>User Name</th>
+		<th>Connections</th>
+	</tr>
+	
+	{% for user_1 in users_list %}
+		<tr>
+			<th>{{user_1.user_id}}</th>
+			<th>{{user_1.name}}</th>
+			<th>
+				{% for user_2 in user_1.connects.all %}
+					{{user_2.name}}
+					{%if not forloop.last%},{%endif%}
+				{% endfor %}
+			</th>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No users available.</p>
+{% endif %}
+
+{% endblock content %}
