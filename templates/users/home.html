@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <p>Instructions</p>
+    <p>We have a number of users that we need to keep track of, we also wish to keep track of the connections between users,</p>
+    <dl>
+    <dt>Add user</dt>
+    <dd>- Opens a form to create new users</dd>
+    <dt>Connect Users</dt>
+    <dd>- Opens a form to connect users</dd>
+    <dt>View Report</dt>
+    <dd>- Retrieve all the users that are directly connected to a given user</dd>
+    <dt>View Chart</dt>
+    <dd>- Opens a chart that shows the connections between the users</dd>
+	
+</dl>
+
+{% endblock content %}

@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Users Connections</title>
-  <meta name="description" content="Users Connections" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'users/base.html' %}
 
+{% block scripts %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/gojs@2.0/release/go.js"></script>
   <script id="code">
     var randomColorGenerator = function () {
@@ -38,24 +34,25 @@
         ],
         [
 		  {% for user_1 in users_list %}
-		    {% for user_2 in user_1.connects.all %}
-			{ from: "{{user_1.name}}", to: "{{user_2.name}}"} {%if not forloop.last%},{%endif%}
-			{% endfor %}
-			{%if not forloop.last%},{%endif%}
+			{% if user_1.connects.all %}
+				{% for user_2 in user_1.connects.all %}
+				{ from: "{{user_1.name}}", to: "{{user_2.name}}"} {%if not forloop.last%},{%endif%}
+				{% endfor %}
+				{%if not forloop.last%},{%endif%}
+			{% endif %}
 		  {% endfor %}
         ]);
     }
   </script>
-</head>
-<body onload="init()">
-<div id="sample">
-  <!-- The DIV for the Diagram needs an explicit size or else we won't see anything.
-       This also adds a border to help see the edges of the viewport. -->
-  {% if users_list %}  
-	<div id="myDiagramDiv" style="border: solid 1px black; width:400px; height:400px"></div>
-  {% else %}
-	<p>No users are available.</p>
-  {% endif %}
-</div>
-</body>
-</html>
+{% endblock scripts %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+	  {% if users_list %}  
+	<div id="myDiagramDiv" style="border: solid 1px black; width:800px; height:400px"></div>
+    {% else %}
+	<p>No users available.</p>
+    {% endif %}
+{% endblock content %}
