@@ -35,7 +35,6 @@
           {% for user in users_list %}
 		  { key: "{{user.name}}", color: randomColorGenerator() }{%if not forloop.last%},{%endif%}
 		  {% endfor %}
-		  //{ key: "Alpha", color: "lightblue" },
         ],
         [
 		  {% for user_1 in users_list %}
@@ -44,11 +43,6 @@
 			{% endfor %}
 			{%if not forloop.last%},{%endif%}
 		  {% endfor %}
-          //{ from: "Alpha", to: "Beta" },
-          //{ from: "Alpha", to: "Gamma" },
-          //{ from: "Beta", to: "Beta" },
-          //{ from: "Gamma", to: "Delta" },
-          //{ from: "Delta", to: "Alpha" }
         ]);
     }
   </script>
