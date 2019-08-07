@@ -8,6 +8,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Users
 from .forms import UsersForm
 
+def delete_user(request,user_id =None):
+    object = Users.objects.get(id=user_id)
+    object.delete()
+    return render(request,'users/home.html')
+
 def view_connections(request):
     # The context contains information such as the client's machine details, for example.
     context = RequestContext(request)
