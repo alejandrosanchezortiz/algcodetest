@@ -15,7 +15,7 @@ Django also includes a small HTTP server for development purposes, so no need to
   **5.** Database Initialization: 'python .\manage.py migrate'  
   **6.** Create an admin user: 'python .\manage.py createsuperuser'  
       * That is only for accesing django administration  
-  **7.** Launch webserver: 'python.\manage.py runserver 8000'    
+  **7.** Launch webserver: 'python .\manage.py runserver 8000'    
       * If it fails, try another port like 8080  
   **8.** Test in a browser: http://127.0.0.1:8000    
       * In the main page we can see some help about the web app functionality.  
