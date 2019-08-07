@@ -21,5 +21,6 @@ urlpatterns = [
     path('view_chart/', include('users.urls')),
     path('add_user/', include('users.urls')),
     path('view_connections/', include('users.urls')),
+    path('delete_view/',  include('users.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -8,10 +8,15 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Users
 from .forms import UsersForm
 
-def delete_user(request,user_id =None):
-    object = Users.objects.get(id=user_id)
+def delete_user(request):
+    id=request.GET.get('user_id')
+    object = Users.objects.get(user_id=id)
     object.delete()
-    return render(request,'users/home.html')
+    
+    context = RequestContext(request)
+    users_list = Users.objects.order_by('user_id')
+    output = {'users_list': users_list}
+    return render_to_response('users/view_connections.html', output, context)
 
 def view_connections(request):
     # The context contains information such as the client's machine details, for example.
@@ -20,6 +25,7 @@ def view_connections(request):
     # Construct a dictionary to pass to the template engine as its context.
     users_list = Users.objects.order_by('user_id')
     output = {'users_list': users_list}
+    
     return render_to_response('users/view_connections.html', output, context)
     
 def add_user(request):

@@ -27,7 +27,7 @@
 					{%if not forloop.last%},{%endif%}
 				{% endfor %}
 			</th>
-			<th><a href="url:delete_view" user_1.id><i class="fa fa-trash"></i></a></th>
+			<th><a href="../delete_view/?user_id={{user_1.user_id}}"><i class="fa fa-trash"></i></a></th>
 		</tr>
 	{% endfor %}
 	</table>
