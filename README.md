@@ -9,21 +9,22 @@ Django also includes a small HTTP server for development purposes, so no need to
   
   **1.** Install Python 3.X: 'https://www.python.org/downloads/'  
   **2.** Repository download: 'git clone https://github.com/alejandrosanchezortiz/algcodetest.git'  
-  **3.** cd algcodetest  
+  **3.** Access repository folder: 'cd algcodetest'  
   **4.** Install Django framework: 'pip install -r requirements.txt'    
-      It will install Django 2.2.4  
+      * It will install Django 2.2.4  
   **5.** Database Initialization: 'python .\manage.py migrate'  
   **6.** Create an admin user: 'python .\manage.py createsuperuser'  
-      That is only for accesing django administration  
+      * That is only for accesing django administration  
   **7.** Launch webserver: 'python.\manage.py runserver 8000'    
-      If it fails, try another port like 8080  
+      * If it fails, try another port like 8080  
   **8.** Test in a browser: http://127.0.0.1:8000    
-      In the main page we can see some help about the web app functionality.  
+      * In the main page we can see some help about the web app functionality.  
   
 **Admin:**  
   We can access Django adminsitration here: http://127.0.0.1:8000/admin with the login/password created 
-  with the command 'python .\manage.py createsuperuser'
+  with the command 'python .\manage.py createsuperuser'  
+  Django administration panel allow us to create new users and stablish relationships between them, I used that to test the database model before creating the final user web pages. 
   
   
-**Notes:** 
-  You can notice that the GoJS library used for the chart is an evaluation version, I tested other free Javascript libraries like Chart.JS   but I did not find a chart that suits the connection between the users.
+**Notes:**  
+  You can notice that the GoJS library used for the chart is an evaluation version, I tested other free Javascript libraries like Chart.JS   but I did not find a chart that suits better the connection between the users.
