@@ -1,0 +1,38 @@
+{% extends 'users/base.html' %}
+
+{% block scripts %}
+	<script src="https://kit.fontawesome.com/d271e69695.js"></script>
+{% endblock scripts%}
+
+{% block title %}Add user connections{% endblock title %}
+
+{% block content %}
+<h1>Add user connections</h1>
+{% if users_list %}
+	<table>
+	<tr>
+		<th>User Id</th>
+		<th>User Name</th>
+		<th>Users available for connection</th>
+	</tr>
+	
+	{% for user_1 in users_list %}
+		<tr>
+			<th>{{user_1.user_id}}</th>
+			<th>{{user_1.name}}</th>
+			<th>
+				{% for user_2 in users_list %}
+					{%if user_2 not in user_1.connects.all and user_1.user_id != user_2.user_id %}
+						<a href="../add_connection/?id1={{user_1.user_id}}&id2={{user_2.user_id}}">{{user_2.name}}</a>
+					{%endif%}
+					{%if not forloop.last%} {%endif%}
+				{% endfor %}
+			</th>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No users available.</p>
+{% endif %}
+
+{% endblock content %}

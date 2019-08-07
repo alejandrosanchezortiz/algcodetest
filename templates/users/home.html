@@ -4,15 +4,19 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <p>Instructions</p>
-    <p>We have a number of users that we need to keep track of, we also wish to keep track of the connections between users,</p>
+    <p><b>Summary:</b></p>
+    <p>We have a number of users that we need to keep track of, we also wish to keep track of the connections between users.</p>
+	<p><b>Menu options:</b></p>
     <dl>
     <dt>Add user</dt>
     <dd>- Opens a form to create new users</dd>
+	<dd>- Names must be unique</dd>
     <dt>Connect Users</dt>
-    <dd>- Opens a form to connect users</dd>
-    <dt>View Report</dt>
+    <dd>- Opens a form to connect users by clicking on the users available for connection</dd>
+	<dd>- Connections are done always both ways: user1-->user2 and user2-->user_1</dd>
+    <dt>View Connections</dt>
     <dd>- Retrieve all the users that are directly connected to a given user</dd>
+	<dd>- Deleting users is also allowed within this report. Deleting an user will delete her/his connections as well</dd>
     <dt>View Chart</dt>
     <dd>- Opens a chart that shows the connections between the users</dd>
 	
