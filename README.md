@@ -1,6 +1,8 @@
 # algcodetest
 Example of a web app where users can stablish relationships with another users and see them in a chart.
 
+**NEW**: I have deployed the web app, now it can be accessed here for testing: http://alejandrosanchezortiz.eu.pythonanywhere.com/
+
 I choosed Django framework because I use Python for automating the regressions tests that we run in our daily tasks.
 Python includes Sqlite database that is enough for this code test, so no need to install MySQL or any other database.
 Django also includes a small HTTP server for development purposes, so no need to install Apache either.
