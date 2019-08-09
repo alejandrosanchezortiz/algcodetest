@@ -21,9 +21,8 @@
 			<th>{{user_1.name}}</th>
 			<th>{% spaceless %}{% for user_2 in users_list %}
 					{%if user_2 not in user_1.connects.all and user_1.user_id != user_2.user_id %}
-						<a href="../add_connection/?id1={{user_1.user_id}}&id2={{user_2.user_id}}" onclick="return confirm('This will connect {{user_1.name}} and {{user_2.name}}.Are you sure?')">{{user_2.name}}</a>
+						<a href="../add_connection/?id1={{user_1.user_id}}&id2={{user_2.user_id}}" onclick="return confirm('This will connect {{user_1.name}} and {{user_2.name}}.Are you sure?')">{{user_2.name}}</a>{%if not forloop.last%}&nbsp{%endif%}
 					{%endif%}
-					{%if not forloop.last%} {%endif%}
 				{% endfor %}{% endspaceless %}</th>
 		</tr>
 	{% endfor %}
