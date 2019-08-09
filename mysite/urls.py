@@ -18,11 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('users.urls')),
-    path('view_chart/', include('users.urls')),
-    path('add_user/', include('users.urls')),
-    path('view_connections/',include('users.urls')),
-    path('delete_view/',include('users.urls')),
-    path('connect_users/',include('users.urls')),
-    path('add_connection/',include('users.urls')),
     path('admin/', admin.site.urls),
 ]
