@@ -17,13 +17,13 @@
 	</tr>
 	{% for user_1 in users_list %}
 		<tr>
-			<th>{{user_1.user_id}}</th>
-			<th>{{user_1.name}}</th>
-			<th>{% spaceless %}{% for user_2 in users_list %}
+			<td>{{user_1.user_id}}</td>
+			<td>{{user_1.name}}</td>
+			<td>{% spaceless %}{% for user_2 in users_list %}
 					{%if user_2 not in user_1.connects.all and user_1.user_id != user_2.user_id %}
 						<a href="../add_connection/?id1={{user_1.user_id}}&id2={{user_2.user_id}}" onclick="return confirm('This will connect {{user_1.name}} and {{user_2.name}}.Are you sure?')">{{user_2.name}}</a>{%if not forloop.last%}&nbsp{%endif%}
 					{%endif%}
-				{% endfor %}{% endspaceless %}</th>
+				{% endfor %}{% endspaceless %}</td>
 		</tr>
 	{% endfor %}
 	</table>

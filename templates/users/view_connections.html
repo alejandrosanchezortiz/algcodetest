@@ -19,10 +19,10 @@
 	
 	{% for user_1 in users_list %}
 		<tr>
-			<th>{{user_1.user_id}}</th>
-			<th>{{user_1.name}}</th>
-			<th>{% spaceless %}{% for user_2 in user_1.connects.all %}{{user_2.name}}{%if not forloop.last%}, {%endif%}{% endfor %}{% endspaceless %}</th>
-			<th><a href="../delete_view/?user_id={{user_1.user_id}}" onclick="return confirm('This will delete {{user_1.name}} and his/her connections.Are you sure?')"><i class="fa fa-trash"></i></a></th>
+			<td>{{user_1.user_id}}</td>
+			<td>{{user_1.name}}</td>
+			<td>{% spaceless %}{% for user_2 in user_1.connects.all %}{{user_2.name}}{%if not forloop.last%}, {%endif%}{% endfor %}{% endspaceless %}</td>
+			<td><a href="../delete_view/?user_id={{user_1.user_id}}" onclick="return confirm('This will delete {{user_1.name}} and his/her connections.Are you sure?')"><i class="fa fa-trash"></i></a></td>
 		</tr>
 	{% endfor %}
 	</table>
